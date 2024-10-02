@@ -1,0 +1,107 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f6f5f4;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.top {
+    z-index: 10000;
+    /*一番上*/
+    position: sticky;
+    top: 0;
+    background-color: #a5888a;
+    width: auto;
+    height: 100px;
+    text-align: center;
+}
+
+.side {
+    transition: all 0.3s;
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+    background-color: #ff838b;
+    width: 400px;
+    height: 100vh;
+    text-align: center;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #b3d874;
+    width: auto;
+    height: 100vh;
+    text-align: center;
+    cursor: pointer;
+    /*サイドバーとメインコンテンツの間に隙間                    をあけた*/
+}
+
+.drag {
+    z-index: 1001;
+}
+
+.text {
+    cursor: text;
+    position: absolute;
+    z-index: 1000;
+    background-color: transparent;
+    overflow: auto;
+
+}
+
+.texta {
+    resize: both;
+    cursor: move;
+}
+
+.butt {
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+#sidebutton1 {
+    text-align: left;
+}
+
+#sidebutton {
+    background: red;
+    border: 2px solid red;
+    position: fixed;
+    height: 46px;
+    width: 46px;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 2px solid #444;
+    border-radius: 4px;
+}
+
+#sidebutton div {
+    position: absolute;
+    left: 7px;
+    height: 2px;
+    width: 28px;
+    background-color: #444;
+    border-radius: 2px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#sidebutton div:nth-of-type(1) {
+    bottom: 30px;
+}
+
+#sidebutton div:nth-of-type(2) {
+    bottom: 20px;
+}
+
+#sidebutton div:nth-of-type(3) {
+    bottom: 10px;
+}
