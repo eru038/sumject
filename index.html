@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="top">
+
+    <h1 class="taitol"><span style="-webkit-text-stroke: 2px black;">VRChat</span></h1>
+    <!-- <img src="images/VRChat_2024-08-13_00-17-38.638_1920x1080.png" alt=""> -->
+    <main>
+        <table class="sort">
+            <tr>
+                <th >Worlds</th>
+
+            </tr>
+            <tr>
+                <td ><button class="sort-btn" data-filter="all">ALL</button>
+                    <button class="sort-btn" data-filter="vr-art">VR art 'New plase'</button>
+                    <button class="sort-btn" data-filter="vamilion-gates">Vamilion Gates</button>
+                    <button class="sort-btn" data-filter="haadokkoi">haadokkoi</button>  <!--のち変更-->
+                    <button class="sort-btn" data-filter="iro-world">色付く世界 UG_IRO</button>
+                    <button class="sort-btn" data-filter="boto-shijuku">望塔私塾</button>
+                </td>
+            </tr>
+        </table>
+        <div class="gallery" id="gallery"></div>
+        <div id="modal" class="modal">
+            <span id="close">×</span>
+            <img src="../夏休み課題/images/aa2.png" alt ="エラー回避" class="modal-content" id="modalImage" >
+        </div>
+    </main>
+
+    
+    <script>
+        const gallery = document.getElementById('gallery');
+        for (let i = 2; i <= 10; i++) {
+            const img = document.createElement('img');
+            img.src = "images/VR　art 'New plase'/a" + i + ".png";
+            img.alt = "VR art 'New plase'" + i;
+            img.className = 'photo vr-art show'; // クラス名を設定
+            gallery.appendChild(img); // ギャラリーに画像を追加
+        }
+        for (let i = 1; i <= 9; i++) {
+            const img = document.createElement('img');
+            img.src = "images/Vamilion Gates/a" + i + ".png";
+            img.alt = "Vamilion Gates'" + i;
+            img.className = 'photo vamilion-gates show'; // クラス名を設定
+            gallery.appendChild(img); // ギャラリーに画像を追加
+        }
+        for (let i = 3; i <= 7; i++) {
+            const img = document.createElement('img');
+            img.src = "images/haadokkoi/a" + i + ".png";
+            img.alt = "haadokkoi" + i;
+            img.className = 'photo haadokkoi show'; // クラス名を設定
+            gallery.appendChild(img); // ギャラリーに画像を追加
+        }
+        
+        
+        for (let i = 1; i <= 12; i++) {
+            const img = document.createElement('img');
+            img.src = "images/色付く世界　UG_IRO/a" + i + ".png";
+            img.alt = "色付く世界　UG_IRO'" + i;
+            img.className = 'photo iro-world show'; // クラス名を設定
+            gallery.appendChild(img); // ギャラリーに画像を追加
+        }
+        for (let i = 1; i <= 7; i++) {
+            const img = document.createElement('img');
+            img.src = "images/望塔私塾/a" + i + ".png";
+            img.alt = "望塔私塾" + i;
+            img.className = 'photo boto-shijuku show'; // クラス名を設定
+            gallery.appendChild(img); // ギャラリーに画像を追加
+        }
+
+
+        const sortBtns = document.querySelectorAll('.sort-btn');
+        // ボタンがクリックされた時の処理
+        sortBtns.forEach(button => {
+            button.addEventListener('click',
+                function () {
+                    const filter = this.getAttribute('data-filter');
+                    const photos = document.querySelectorAll('.photo');
+
+                    // ALLボタンが押された場合は全てを表示
+                    if (filter === 'all') {
+                        photos.forEach(photo => photo.classList.add('show'));
+                    } else {
+                        photos.forEach(photo => {
+                            // 該当するクラスを持つ写真だけを表示
+                            if (photo.classList.contains(filter)) {
+                                photo.classList.add('show');
+                            } else {
+                                photo.classList.remove('show');
+                            }
+                        });
+                    }
+                });
+        });
+        // モーダルウィンドウ全体を指す要素
+        const modal = document.getElementById('modal');
+
+        // モーダル内で拡大表示される画像を指す要素
+        const modalImg = document.getElementById('modalImage');
+
+        // .photoクラスを持つ画像のリストです。これらの画像をクリックすると、モーダルが表示されます
+        const imgs = document.querySelectorAll('.photo');
+
+        // モーダルを閉じるためのボタン
+        const closeSpan = document.getElementById('close');
+
+        // 画像クリックでモーダルを表示するイベント
+        for (let img of imgs) {
+            img.onclick = function () {
+
+                //モーダルを表示する
+                modal.style.opacity = "1";
+                modal.style.visibility = "visible";
+
+                // モーダルで表示する画像に、クリックした画像のパスを設定する
+                modalImg.src = this.src;
+            }
+        }
+
+        // クローズボタンを押したらモーダルを閉じる
+        closeSpan.onclick = function () {
+            modal.style.opacity = "0";
+            modal.style.visibility = "hidden";
+        }
+
+        // 画像以外の部分をクリックしたらモーダルを閉じる
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.opacity = "0";
+                modal.style.visibility = "hidden";
+            }
+        }
+    </script>
+    <footer>
+        <a href="#top">topに戻る</a>
+    </footer>
+</body>
+
+</html>
